@@ -22,10 +22,6 @@ df.loc[df.gluc > 1, 'gluc'] = 1
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
     df_cat = pd.melt(df, id_vars='cardio', value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
-
-
-    # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
-    #df_cat = None
     
 
     # Draw the catplot with 'sns.catplot()'
@@ -53,13 +49,10 @@ def draw_heat_map():
     # Generate a mask for the upper triangle
     mask = np.triu(corr)
 
-
-
     # Set up the matplotlib figure
     fig, ax = plt.subplots()
 
     # Draw the heatmap with 'sns.heatmap()'
-    
     sns.heatmap(corr, mask=mask, annot=True, fmt=".1f", linewidth=.5, vmin=-.1, vmax=.3)
 
     # Do not modify the next two lines
